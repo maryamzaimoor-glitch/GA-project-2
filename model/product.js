@@ -34,7 +34,8 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    orderedBy: { 
+    orderedBy: { //createdBy: req.session.user._id
+
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
     }
