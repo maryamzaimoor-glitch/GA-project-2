@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <%- include ('navbar') %>
+    <h1> Product Details</h1>
+    <p><%= productDetails.productName %></p>
+    <p><%= productDetails.price %></p>
+    <p><%= productDetails.description %></p>
+    <a href="/products">Back to all products</a>
+
+    <form action="/products/delete/<%= productDetails._id %>" method="post">
+        <button>Delete Product</button>
+    </form>
+    
+</body>
+</html> 

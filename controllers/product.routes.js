@@ -5,9 +5,15 @@ const router = require('express').Router();
 
 
 //create products 
-router.get('/new', async (req,res)=>{
-    res.render('create-product.ejs')
-})
+router.post('/', async (req, res) => {
+    try{
+        const createdProduct = await Product.create(req.body);
+        res.redirect('/products');
+    }
+    catch(error){
+        console.log("Error creating product:", error);
+    }
+    })
 
 // view all products
 router.get('/', async (req,res) =>{
@@ -30,6 +36,7 @@ router.get('/:id', async (req,res)=>{
         console.log("Error", error);
     }
 })
+
 
 // delete a product
 router.post('/delete/:id', async (req,res)=>{

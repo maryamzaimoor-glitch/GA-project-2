@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <%- include ('navbar') %>
+    <h1> Order Details</h1>
+    <p><%= orderDetails.orderId %></p>
+    <p><%= orderDetails.items %></p>
+    <p><%= orderDetails.totalPrice %></p>
+    <p><%= orderDetails.status %></p>
+    <a href="/orders">Back to all orders</a>
+
+    <form action="/orders/update/<%= orderDetails._id %>" method="post">
+        <button>Update Order</button>
+    </form>
+    <form action="/orders/delete/<%= orderDetails._id %>" method="post">
+        <button>Delete Order</button>
+    </form>
+
+    
+</body>
+</html> 
