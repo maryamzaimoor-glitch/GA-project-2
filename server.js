@@ -67,6 +67,8 @@ connectToDB() // connect to database
 
 
 // Routes go here
+app.use("/", indexController)
+app.use("/auth", authController)
 app.use("/products", productRoutes)
 app.use("/orders", orderRoutes)
 
@@ -75,6 +77,7 @@ app.use("/orders", orderRoutes)
 // PROTECTED ROUTES:
 app.use(isSignedIn)
 // Everything under the user NEEDS to be logged in to se
+app.use("/orders", isSignedIn, orderRoutes)
 
 
 

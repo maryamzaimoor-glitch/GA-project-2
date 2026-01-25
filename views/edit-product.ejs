@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include("navbar.ejs") %>
+    <h1>Edit Product</h1>
+    <form action="/products/<%= productToEdit._id %>" method="post">
+        
+        
+        <label for name> Product Name:</label>
+        <input type ="text" name ="productName" id ="name" value="<%= productToEdit.productName %>"/>       
+        
+        <label for Roast> Roast:</label>
+        <input type ="text" name ="roast" id ="roast" value="<%= productToEdit.roast %>"/>       
+        
+        <label for origin> Origin:</label>
+        <input type ="text" name ="origin" id ="origin" value="<%= productToEdit.origin %>"/>       
+        
+        <label for size> Size:</label>
+        <input type ="text" name ="size" id ="size" value="<%= productToEdit.size %>"/>       
+        
+        <label for price> Price: </label>
+        <input type="Number" name ="price" value="<%= productToEdit.price %>"/>       
+        
+        <label for description> Description:</label>
+        <input type ="text" name ="description" id ="description" value="<%= productToEdit.description %>"/>       
+        
+        <button type ="submit"> Update Product</button>
+
+</body>
+</html>

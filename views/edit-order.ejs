@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include("navbar.ejs") %>
+
+<h1>Edit Order</h1>
+
+<form action="/orders/update/<%= foundOrder._id %>" method="POST">
+
+  <label>Total Price:</label>
+  <input type="number" name="totalPrice" value="<%= foundOrder.totalPrice %>" required />
+
+  <label>Status:</label>
+  <select name="status">
+    <option value="Processing" <%= foundOrder.status === "Processing" ? "selected" : "" %>>Processing</option>
+    <option value="Shipped" <%= foundOrder.status === "Shipped" ? "selected" : "" %>>Shipped</option>
+    <option value="Delivered" <%= foundOrder.status === "Delivered" ? "selected" : "" %>>Delivered</option>
+  </select>
+
+
+  <button type="submit">Update Order</button>
+</form>
+
+</body>
+</html>

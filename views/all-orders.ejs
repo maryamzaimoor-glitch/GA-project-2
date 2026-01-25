@@ -9,12 +9,13 @@
     <%- include ('navbar') %>
     <h1>All Orders</h1>
 
+    <% allOrders.forEach(order => { %>
+    <p>Order ID: <%= order.orderId %></p>
+    <p>Total: <%= order.totalPrice %></p>
+    <p>Status: <%= order.status %></p>
 
-    <% allOrders.forEach(oneOrder => { %>
-            <p>%= oneOrder.orderName%></p>
-            <a href="/orders/<%=oneOrder._id %>"> See Details</a>
-
-    <% }) %>
+  <a href="/orders/<%= order._id %>">View Details</a>
+<% }) %>
 
 </body>
 </html>

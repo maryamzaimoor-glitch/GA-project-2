@@ -15,9 +15,8 @@
     <p><%= orderDetails.status %></p>
     <a href="/orders">Back to all orders</a>
 
-    <form action="/orders/update/<%= orderDetails._id %>" method="post">
-        <button>Update Order</button>
-    </form>
+    <a href="/orders/<%= orderDetails._id %>/edit">Edit Order</a>
+    
     <form action="/orders/delete/<%= orderDetails._id %>" method="post">
         <button>Delete Order</button>
     </form>

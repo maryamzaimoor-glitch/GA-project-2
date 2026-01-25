@@ -6,40 +6,35 @@ const productSchema = new mongoose.Schema({
       ref: "User",
       required: true,
     },
-    productName:{
+    name:{
         type: String,
         required: true
     },
-    productPrice:{
+    price:{
         type: Number,
         required: true
     },
-    productOrigin:{
+    origin:{
         type: String,
         required: true
     },
-    productImage:{
+    image:{
+        type: String,
+    },
+    roast:{
         type: String,
         required: true
     },
-    productRoast:{
-        type: String,
-        required: true
-    },
-    productSize:{
+    size:{
         type: String,
         required: true
     },  
-    productDescription:{
+    description:{
         type: String,
         required: true
-    },
-    orderedBy: { //createdBy: req.session.user._id
-
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-    }
+    } 
 })
+
 
 const Product = mongoose.model("Product", productSchema)
 

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include("navbar.ejs") %>
+    <h1>Start Your Order</h1>
+    <form action="/orders" method="POST">
+
+  <label>Total Price:</label>
+  <input type="number" name="totalPrice" placeholder="ex: 10" required />
+
+  <label>Status:</label>
+  <select name="status">
+    <option value="Processing" selected>Processing</option>
+    <option value="Shipped">Shipped</option>
+    <option value="Delivered">Delivered</option>
+  </select>
+  <button type="submit">Create Order</button>
+
+</form>
+</body>
+</html>

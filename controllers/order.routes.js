@@ -3,17 +3,29 @@ const Order = require('../model/order');
 const router = require('express').Router();
 
 
+router.get("/new", (req, res) => {
+  res.render("create-order.ejs")
+})
 
 //create orders 
-router.post('/', async (req, res) => {
-    try{
-        const createdOrder = await Order.create(req.body);
-        res.redirect('/orders');
+router.post("/", async (req, res) => {
+  try {
+    const newOrder = {
+      orderId: `${Date.now()}`,
+      totalPrice: req.body.totalPrice,
+      status: req.body.status,
+      user: req.session.user._id,
+      items: [],
     }
-    catch(error){
-        console.log("Error creating order:", error);
-    }
-    })
+
+    await Order.create(newOrder)
+    res.redirect("/orders")
+  } catch (error) {
+    console.log("Error creating order:", error)
+    res.send("Error creating order")
+  }
+})
+
 
 // view all orders
 router.get('/', async (req,res) =>{
@@ -24,6 +36,29 @@ router.get('/', async (req,res) =>{
     catch(error){
         console.log("Error", error);
     }     
+})
+
+// edit order
+router.get("/:id/edit", async (req, res) => {
+  try {
+    const foundOrder = await Order.findById(req.params.id)
+    res.render("edit-order.ejs", { foundOrder })
+  } catch (error) {
+    console.log("Error:", error)
+    res.send("Error loading edit page")
+  }
+})
+
+
+// update order
+router.post("/update/:id", async (req, res) => {
+  try {
+    await Order.findByIdAndUpdate(req.params.id, req.body)
+    res.redirect(`/orders/${req.params.id}`)
+  } catch (error) {
+    console.log("Error updating order:", error)
+    res.send("Error updating order")
+  }
 })
 
 // view order details
