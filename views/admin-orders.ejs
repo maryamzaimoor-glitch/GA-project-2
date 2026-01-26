@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Orders</title>
+</head>
+<body>
+
+  <%- include("navbar.ejs") %>
+  <h1>All Customer Orders </h1>
+
+    <% allOrders.forEach(order => { %>
+
+      <h3>Order Number: <%= order.orderId %></h3>
+      <p><strong>Customer:</strong> <%= order.customerName %></p>
+      <p><strong>Phone:</strong> <%= order.phone %></p>
+      <p><strong>Address:</strong> <%= order.address %></p>
+      <p><strong>Status:</strong> <%= order.status %></p>
+
+      <h4>Items:</h4>
+      <ul>
+        <% order.items.forEach(item => { %>
+          <li><%= item.product.name %> (x<%= item.quantity %>)</li>
+        <% }) %>
+      </ul>
+
+      <p><strong>Total:</strong> <%= order.totalPrice %></p>
+      <form action="/admin/orders/<%= order._id %>/status" method="POST">
+        <label>Update Status:</label>
+        <select name="status">
+          <option value="Processing" <%= order.status === "Processing" ? "selected" : "" %>>Processing</option>
+          <option value="Shipped" <%= order.status === "Shipped" ? "selected" : "" %>>Shipped</option>
+          <option value="Delivered" <%= order.status === "Delivered" ? "selected" : "" %>>Delivered</option>
+        </select>
+        <button type="submit">Update</button>
+      </form>
+
+      <hr />
+
+    <% }) %>
+
+</body>
+</html>
