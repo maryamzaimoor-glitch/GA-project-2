@@ -1,14 +1,17 @@
 <div>
+   <% if (user && user.admin) { %>
+    <a href="/orders/admin">Business Orders</a>
+    <a href="/products/new">Add Product</a>
+    <% } %>
 
   <% if (user) { %>
     <a href="/auth/sign-out">Logout</a>
     <a href="/products">All Products</a>
-    <a href="/products/new">Add Product</a>
     <a href="/orders/new">Create Order</a>
-    <a href="/orders">All Orders</a>
+    <a href="/orders">My Orders</a>
+    
   <% } else { %>
     <a href="/auth/sign-up">Sign up</a>
     <a href="/auth/sign-in">Login</a>
   <% } %>
 </div>
-

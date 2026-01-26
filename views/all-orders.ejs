@@ -1,23 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Orders</title>
 </head>
 <body>
-    <%- include ('navbar') %>
-    <h1>All Orders</h1>
+
+  <%- include("navbar.ejs") %>
+
+  <h1>My Orders</h1>
+
+  <% if (allOrders.length === 0) { %>
+    <p>No orders yet</p>
+  <% } else { %>
 
     <% allOrders.forEach(order => { %>
-    <p>Order ID: <%= order.orderId %></p>
-    <p>Customer: <%= order.user %></p>
-    <p>Total: <%= order.totalPrice %></p>
-    <p>Address: <%= order.address</p>
-    <p>Status: <%= order.status %></p>
+      <p>Items: <%= order.items %></p>
+      <p>Total: <%= order.totalPrice %></p>
+      <p>Status: <%= order.status %></p>
 
-  <a href="/orders/<%= order._id %>">View Details</a>
-<% }) %>
+      <a href="/orders/<%= order._id %>">View Details</a>
+
+    <% }) %>
+
+  <% } %>
 
 </body>
 </html>

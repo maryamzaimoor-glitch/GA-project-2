@@ -23,14 +23,14 @@ router.post("/", async (req, res) => {
   } catch (error) {
     console.log("Error creating order:", error)
     res.send("Error creating order")
-  }
+  } 
 })
 
 
 // view all orders
 router.get('/', async (req,res) =>{
     try{
-        const orders = await Order.find({});
+        const orders = await Order.find({ user: req.session.user._id })
         res.render('all-orders.ejs', {allOrders: orders});
         }
     catch(error){
@@ -58,6 +58,46 @@ router.post("/update/:id", async (req, res) => {
   } catch (error) {
     console.log("Error updating order:", error)
     res.send("Error updating order")
+  }
+})
+const Product = require("../model/product")
+
+router.post("/cart/add/:productId", async (req, res) => {
+  try {
+    const userId = req.session.user._id
+    const productId = req.params.productId
+
+    // find cart order for this user
+    let cart = await Order.findOne({ user: userId, status: "Cart" })
+
+    // if no cart, create one
+    if (!cart) {
+      cart = await Order.create({
+        user: userId,
+        orderId: `${Date.now()}`,
+        items: [],
+        totalPrice: 0,
+        status: "Cart",
+      })
+    }
+
+    //check if product already exists inside cart
+    const existingItem = cart.items.find(
+      (item) => item.product.toString() === productId
+    )
+
+    if (existingItem) {
+      existingItem.quantity += 1
+    } else {
+      cart.items.push({ product: productId, quantity: 1 })
+    }
+
+    await cart.save()
+
+    res.redirect("/products")
+  } catch (error) {
+    console.log(error)
+    res.send("Error adding to cart")
   }
 })
 

@@ -12,7 +12,7 @@ const passUserToView = require("./middleware/pass-user-to-view.js");
 const methodOverride = require('method-override')
 const productRoutes = require("./controllers/product.routes.js");
 const orderRoutes = require("./controllers/order.routes.js");
-
+const adminRoutes = require("./controllers/admin.routes.js")
 
 
 app.use(express.static('public')) // my app will serve all static files from public folder
@@ -71,6 +71,8 @@ app.use("/", indexController)
 app.use("/auth", authController)
 app.use("/products", productRoutes)
 app.use("/orders", orderRoutes)
+app.use("/admin", adminRoutes)
+
 
 
 

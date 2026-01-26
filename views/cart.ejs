@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include("navbar.ejs") %>
+
+    <h1>My Cart</h1>
+
+    <% if (!cart || cart.items.length === 0) { %>
+          <p>Your cart is empty.</p>
+    <% } else { %>
+
+  <% cart.items.forEach(item => { %>
+    <p><strong>Product:</strong> <%= item.product.name %></p>
+    <p><strong>Price:</strong> <%= item.product.price %></p>
+    <p><strong>Quantity:</strong> <%= item.quantity %></p>
+    <hr />
+  <% }) %>
+
+<% } %>
+
+</body>
+</html>
