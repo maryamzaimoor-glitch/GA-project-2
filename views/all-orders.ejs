@@ -11,7 +11,9 @@
 
     <% allOrders.forEach(order => { %>
     <p>Order ID: <%= order.orderId %></p>
+    <p>Customer: <%= order.user %></p>
     <p>Total: <%= order.totalPrice %></p>
+    <p>Address: <%= order.address</p>
     <p>Status: <%= order.status %></p>
 
   <a href="/orders/<%= order._id %>">View Details</a>

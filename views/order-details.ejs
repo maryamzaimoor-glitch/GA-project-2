@@ -9,14 +9,14 @@
 
     <%- include ('navbar') %>
     <h1> Order Details</h1>
-    <p><%= orderDetails.orderId %></p>
-    <p><%= orderDetails.items %></p>
-    <p><%= orderDetails.totalPrice %></p>
-    <p><%= orderDetails.status %></p>
+    <p>ID: <%= orderDetails.orderId %></p>
+    <p>Items Ordered: <%= orderDetails.items %></p>
+    <p>Total Price: <%= orderDetails.totalPrice %></p>
+    <p>Status: <%= orderDetails.status %></p>
     <a href="/orders">Back to all orders</a>
 
     <a href="/orders/<%= orderDetails._id %>/edit">Edit Order</a>
-    
+
     <form action="/orders/delete/<%= orderDetails._id %>" method="post">
         <button>Delete Order</button>
     </form>
