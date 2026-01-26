@@ -9,6 +9,10 @@
     <%- include ('navbar') %>
     <h1>Create Product</h1>
     <form action ="/products" method = "post">
+        
+        <label for="image">Select an image:</label>
+        <input type="file" name="image" id="image" accept="image/*" required>
+
         <label for name> Product Name:</label>
         <input type ="text" name ="name" id ="name"/>
 

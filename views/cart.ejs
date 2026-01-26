@@ -27,8 +27,9 @@
 
     <h2>Total: <%= total %></h2>
 
-<a href="/orders/new">Proceed to Order</a>
-
+<form action="/orders/new" method="GET">
+  <button type="submit">Proceed to Order</button>
+</form>
 <% } %>
 
 </body>

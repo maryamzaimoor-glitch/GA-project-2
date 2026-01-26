@@ -148,7 +148,7 @@ router.put("/:id", isSignedIn, async (req, res) => {
 })
 
 // delete
-router.delete("/:id", isSignedIn, async (req, res) => {
+router.post("/delete/:id", isSignedIn, async (req, res) => {
   try {
     await Order.findByIdAndDelete(req.params.id)
     res.redirect("/orders")
@@ -157,5 +157,6 @@ router.delete("/:id", isSignedIn, async (req, res) => {
     res.send("Error deleting order")
   }
 })
+
 
 module.exports = router

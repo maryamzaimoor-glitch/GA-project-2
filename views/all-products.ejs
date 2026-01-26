@@ -9,6 +9,7 @@
     <%- include ('navbar') %>
     <h1>All Products</h1>
     <% allProducts.forEach(product => { %>
+    <img src="<%= product.image %>" alt="<%= product.name %>" width="150">
     <h2><%= product.name %></h2>
     <p><%= product.roast %></p>
     <p><%= product.origin %></p>
@@ -21,6 +22,7 @@
   <form action="/orders/cart/add/<%= product._id %>" method="POST">
     <button type="submit">Add To Cart</button>
         </form>
+      <hr />
 
 <% }) %>
 
