@@ -18,6 +18,10 @@
 
   
   <a href="/products/<%= product._id %>">View Details</a>
+  <form action="/orders/cart/add/<%= product._id %>" method="POST">
+    <button type="submit">Add To Cart</button>
+        </form>
+
 <% }) %>
 
 </body>

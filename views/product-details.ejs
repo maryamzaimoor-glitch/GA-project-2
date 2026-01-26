@@ -22,6 +22,10 @@
     <form action="/products/delete/<%= productDetails._id %>" method="post">
         <button>Delete Product</button>
     </form>
+    <form action="/orders/cart/add/<%= productDetails._id %>" method="POST">
+  <button type="submit">Add To Cart</button>
+    </form>
+
 
 </body>
 </html> 

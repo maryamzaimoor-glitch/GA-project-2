@@ -11,15 +11,23 @@
     <h1>My Cart</h1>
 
     <% if (!cart || cart.items.length === 0) { %>
-          <p>Your cart is empty.</p>
+          <p>Your cart is empty</p>
     <% } else { %>
+        <% let total = 0; %>
 
-  <% cart.items.forEach(item => { %>
-    <p><strong>Product:</strong> <%= item.product.name %></p>
-    <p><strong>Price:</strong> <%= item.product.price %></p>
-    <p><strong>Quantity:</strong> <%= item.quantity %></p>
-    <hr />
-  <% }) %>
+    <% cart.items.forEach(item => { %>
+      <% total += item.product.price * item.quantity; %>
+
+      <p><strong>Product:</strong> <%= item.product.name %></p>
+      <p><strong>Price:</strong> <%= item.product.price %></p>
+      <p><strong>Quantity:</strong> <%= item.quantity %></p>
+      <p><strong>Subtotal:</strong> <%= item.product.price * item.quantity %></p>
+      <hr />
+    <% }) %>
+
+    <h2>Total: <%= total %></h2>
+
+<a href="/orders/new">Proceed to Order</a>
 
 <% } %>
 

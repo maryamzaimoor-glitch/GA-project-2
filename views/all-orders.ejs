@@ -11,16 +11,32 @@
 
   <h1>My Orders</h1>
 
-  <% if (allOrders.length === 0) { %>
+  <% if (!allOrders || allOrders.length === 0) { %>
     <p>No orders yet</p>
   <% } else { %>
 
     <% allOrders.forEach(order => { %>
-      <p>Items: <%= order.items %></p>
+
+      <h3>Items:</h3>
+
+      <% if (!order.items || order.items.length === 0) { %>
+        <p>No items in this order</p>
+      <% } else { %>
+        <ul>
+          <% order.items.forEach(item => { %>
+            <li>
+              <%= item.product?.name || "Unknown product" %> (x<%= item.quantity %>)
+            </li>
+          <% }) %>
+        </ul>
+      <% } %>
+
       <p>Total: <%= order.totalPrice %></p>
       <p>Status: <%= order.status %></p>
 
       <a href="/orders/<%= order._id %>">View Details</a>
+
+      <hr />
 
     <% }) %>
 

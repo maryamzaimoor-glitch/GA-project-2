@@ -1,35 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Place Order</title>
 </head>
 <body>
-    <%- include("navbar.ejs") %>
-    <h1>Start Your Order</h1>
-    <form action="/orders" method="POST">
 
+  <%- include("navbar.ejs") %>
 
-  <label> Name:</label>
-  <input type="text" name="name" placeholder="ex: Maryam Ali" required />
+  <h1>Start Your Order</h1>
+  <form action="/orders/submit" method="POST">
 
-  <label> Address:</label>
-  <input type="text" name="address" placeholder="ex: House XXXX Manama" required />
+    <label>Name:</label>
+    <input type="text" name="customerName" placeholder="ex: Maryam Ali" required/>
 
-  <label> Items: </label>
+    <label>Phone:</label>
+    <input
+      type="text" name="phone" placeholder="ex: +97338320939" required/>
 
-  <label>Total Price:</label>
-  <input type="number" name="totalPrice" placeholder="ex: 10" required />
+    <label>Address:</label>
+    <input type="text" name="address" placeholder="ex: House XXXX, Manama" required />
 
-  <label>Status:</label>
-  <select name="status">
-    <option value="Processing" selected>Processing</option>
-    <option value="Shipped">Shipped</option>
-    <option value="Delivered">Delivered</option>
-  </select>
-  <button type="submit">Create Order</button>
+    <button type="submit">Place Order</button>
 
-</form>
+  </form>
+
 </body>
 </html>
