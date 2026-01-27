@@ -33,5 +33,16 @@ router.post("/orders/:id/status", isSignedIn, async (req, res) => {
   }
 })
 
+router.get("/products", admin, async (req, res) => {
+  const products = await Product.find()
+  res.render("admin-products", {allProducts: products,user: req.session.user})
+})
+
+router.get("/products/:id", admin, async (req, res) => {
+  const product = await Product.findById(req.params.id)
+  res.render("product-details", { product })
+})
+
+
 
 module.exports = router

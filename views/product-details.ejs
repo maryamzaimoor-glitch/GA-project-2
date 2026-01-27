@@ -17,9 +17,9 @@
     <p><%= productDetails.description %></p>
     <a href="/products">Back to all products</a>
 
-    <a href="/products/<%= productDetails._id %>/edit">Edit Product</a>
+    <a href="/admin/products/<%= productDetails._id %>/edit">Edit Product</a>
 
-    <form action="/products/delete/<%= productDetails._id %>" method="post">
+    <form action="/admin/products/delete/<%= productDetails._id %>" method="post">
         <button>Delete Product</button>
     </form>
     <form action="/orders/cart/add/<%= productDetails._id %>" method="POST">

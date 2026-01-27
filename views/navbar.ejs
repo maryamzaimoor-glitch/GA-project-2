@@ -1,17 +1,18 @@
 <div>
-   <% if (user && user.admin) { %>
+    <% if (user && user.isAdmin) { %>
+    <a href="/auth/sign-out">Logout</a>
+    <a href="/products/new">Add Product</a>
+    <a href="/products/">Product Details</a>
     <a href="/orders/admin">Business Orders</a>
     <% } %>
 
   <% if (user) { %>
     <a href="/auth/sign-out">Logout</a>
-    <a href="/products/new">Add Product</a>
     <a href="/products">All Products</a>
-    <a href="/orders/new">Create Order</a>
-    <a href="/orders">My Orders</a>
     <a href="/orders/cart">Cart</a>
-    <a href="/admin/orders">Admin Orders</a>
-
+    <a href="/orders/new">Place Order</a>
+    <a href="/orders">My Orders</a>
+    
 
     
   <% } else { %>
