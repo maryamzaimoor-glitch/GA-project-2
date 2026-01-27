@@ -3,7 +3,7 @@ const Order = require("../model/order")
 const admin = require("../model/admin")
 const isSignedIn = require("../middleware/is-signed-in")
 
-router.get("/admin", admin, async (req, res) => {
+router.get("/admin", admin, isSignedIn, admin, async (req, res) => {
   const orders = await Order.find({}).populate("user")
   res.render("admin-orders.ejs", { allOrders: orders })
 })
@@ -42,7 +42,5 @@ router.get("/products/:id", admin, async (req, res) => {
   const product = await Product.findById(req.params.id)
   res.render("product-details", { product })
 })
-
-
 
 module.exports = router
