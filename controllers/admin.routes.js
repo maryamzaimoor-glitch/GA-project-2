@@ -3,7 +3,7 @@ const Order = require("../model/order")
 const admin = require("../model/admin")
 const isSignedIn = require("../middleware/is-signed-in")
 
-router.get("/admin", admin, isSignedIn, admin, async (req, res) => {
+router.get("/admin", isSignedIn, admin, async (req, res) => {
   const orders = await Order.find({}).populate("user")
   res.render("admin-orders.ejs", { allOrders: orders })
 })
