@@ -19,13 +19,14 @@
     <p><%= product.price %> BD</p>
     <p><%= product.description %></p>
 
-  
+
+
   <a href="/admin/products/<%= product._id %>">View Details</a>
   <form action="/orders/cart/add/<%= product._id %>" method="POST">
     <button type="submit">Add To Cart</button>
         </form>
       <hr />
-
+  
 <% }) %>
 
 </body>

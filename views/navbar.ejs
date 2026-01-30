@@ -1,4 +1,5 @@
 <div>
+    
     <% if (user && user.admin) { %>
     <a href="/auth/sign-out">Logout</a>
     <a href="/products/new">Add Product</a>
@@ -8,15 +9,11 @@
 
   <% if (user && !user.admin) { %>
     <a href="/auth/sign-out">Logout</a>
-    <a href="/products">All Products</a>
-    <a href="/orders/cart">Cart</a>
+    <a href="/products">Browse All Products</a>
+    <a href="/orders/cart">My Cart</a>
     <a href="/orders/new">Place Order</a>
     <a href="/orders">My Orders</a>
     
 
-    
-  <% } else { %>
-    <a href="/auth/sign-up">Sign up</a>
-    <a href="/auth/sign-in">Login</a>
   <% } %>
 </div>

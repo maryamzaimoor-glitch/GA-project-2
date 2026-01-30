@@ -13,6 +13,7 @@ router.get("/cart", isSignedIn, async (req, res) => {
       status: "Cart",
     }).populate("items.product")
 
+    console.log(cart)
     res.render("cart.ejs", { cart })
   } catch (error) {
     console.log(error)

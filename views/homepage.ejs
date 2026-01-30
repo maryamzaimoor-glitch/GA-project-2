@@ -9,8 +9,42 @@
 </head>
 <body>
     <%- include('navbar') %>
+<div class="home-hero">
+  <h1>Welcome to Beanz ☕</h1>
+  <p class="subtitle">
+    Carefully sourced coffee, roasted with care delivered fresh to you.
+  </p>
 
-    <h1>Welcome to my Website</h1>
+  <% if (!user) { %>
+    <div class="cta">
+      <a href="/auth/sign-up" class="btn primary">Create an Account</a>
+      <a href="/auth/sign-in" class="btn secondary">Login</a>
+    </div>
+  <% } else { %>
+    <div class="cta">
+      <a href="/products" class="btn primary">Browse Products</a>
+      <a href="/orders/cart" class="btn secondary">View Cart</a>
+    </div>
+  <% } %>
+</div>
+
+<div class="features">
+  <div class="feature-card">
+    <h3>🌱 Fresh Beans</h3>
+    <p>Ethically sourced and roasted in small batches.</p>
+  </div>
+
+  <div class="feature-card">
+    <h3>🚚 Fast Delivery</h3>
+    <p>Your coffee delivered quickly to your doorstep.</p>
+  </div>
+
+  <div class="feature-card">
+    <h3>🤎 Simple Process</h3>
+    <p>Add to cart, checkout, and track your order easily.</p>
+  </div>
+</div>
+
 
 </body>
 </html>

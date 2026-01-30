@@ -10,26 +10,26 @@
 <body>
     <%- include("navbar.ejs") %>
     <h1>Edit Product</h1>
-    <form action="/products/<%= productToEdit._id %>" method="post">
+    <form action="/products/<%= product._id %>" method="post">
         
         
         <label for name> Product Name:</label>
-        <input type ="text" name ="productName" id ="name" value="<%= productToEdit.productName %>"/>       
+        <input type ="text" name ="productName" id ="name" value="<%= product.productName %>"/>       
         
         <label for Roast> Roast:</label>
-        <input type ="text" name ="roast" id ="roast" value="<%= productToEdit.roast %>"/>       
+        <input type ="text" name ="roast" id ="roast" value="<%= product.roast %>"/>       
         
         <label for origin> Origin:</label>
-        <input type ="text" name ="origin" id ="origin" value="<%= productToEdit.origin %>"/>       
+        <input type ="text" name ="origin" id ="origin" value="<%= product.origin %>"/>       
         
         <label for size> Size:</label>
-        <input type ="text" name ="size" id ="size" value="<%= productToEdit.size %>"/>       
+        <input type ="text" name ="size" id ="size" value="<%= product.size %>"/>       
         
         <label for price> Price: </label>
-        <input type="Number" name ="price" value="<%= productToEdit.price %>"/>       
+        <input type="Number" name ="price" value="<%= product.price %>"/>       
         
         <label for description> Description:</label>
-        <input type ="text" name ="description" id ="description" value="<%= productToEdit.description %>"/>       
+        <input type ="text" name ="description" id ="description" value="<%= product.description %>"/>       
         
         <button type ="submit"> Update Product</button>
 

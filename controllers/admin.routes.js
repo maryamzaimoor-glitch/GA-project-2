@@ -4,16 +4,14 @@ const Product = require("../model/product")
 const admin = require("../middleware/admin")
 const isSignedIn = require("../middleware/is-signed-in")
 
-router.get("/", isSignedIn, admin, async (req, res) => {
-  const orders = await Order.find({}).populate("user")
-  res.render("admin-orders.ejs", { allOrders: orders })
-})
+
 
 // view all orders 
 router.get("/orders", isSignedIn, admin, async (req, res) => {
   try {
-    const allOrders = await Order.find({ status: { $ne: "Cart" } }).populate("items.product")
-    res.render("admin-orders.ejs", { allOrders })
+    const allOrders = await Order.find({ status: { $ne: "Cart" } }).populate("user").populate("items.product")
+    console.log(allOrders)
+    res.render("admin-orders.ejs", {allOrders})
   } catch (error) {
     console.log(error)
     res.send("Error loading admin orders")
@@ -34,20 +32,35 @@ router.post("/orders/:id/status", isSignedIn, admin, async (req, res) => {
   }
 })
 
+//views all products
 router.get("/products", isSignedIn, admin, async (req, res) => {
   const products = await Product.find()
-  res.render("admin-products", {allProducts: products,user: req.session.user})
+  res.render("admin-products.ejs", {allProducts: products,user: req.session.user})
 })
 
+//view details
 router.get("/products/:id", isSignedIn, admin, async (req, res) => {
   const product = await Product.findById(req.params.id)
-  res.render("product-details.ejs", { productDetails:product })
-})
+  console.log(product)
 
+  if (!product) {
+    return res.redirect("/admin/products")
+  }
+
+  res.render("product-details.ejs", { productDetails: product })
+})
 //edit
 router.get("/products/:id/edit", isSignedIn, admin, async (req, res) => {
   const product = await Product.findById(req.params.id)
   res.render("edit-product.ejs", { product })
 })
+
+//delete
+router.post("/products/delete/:id", isSignedIn, admin, async (req, res) => {
+  await Product.findByIdAndDelete(req.params.id)
+  res.redirect("/admin/products")
+})
+
+
 
 module.exports = router
