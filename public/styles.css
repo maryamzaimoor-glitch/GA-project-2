@@ -20,16 +20,24 @@ a:hover {
   padding: 14px 28px;
   margin-bottom: 40px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   border-radius: 10px;
+  gap: 40px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px; 
 }
 
 .navbar .left,
 .navbar .right {
   display: flex;
   gap: 28px;
-  align-items: center;
+
 }
 
 .navbar a {
@@ -73,7 +81,7 @@ h2 {
 }
 
 button {
-  background: #8b5e34; /* coffee */
+  background: #8b5e34; 
   color: white;
   border: none;
   padding: 9px 16px;

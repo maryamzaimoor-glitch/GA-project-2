@@ -1,19 +1,20 @@
-<div>
-    
+<div class="navbar">
+  <div class="nav-links">
+
     <% if (user && user.admin) { %>
-    <a href="/auth/sign-out">Logout</a>
-    <a href="/products/new">Add Product</a>
-    <a href="/products">All Products</a>
-    <a href="/admin/orders">Business Orders</a>
+      <a href="/auth/sign-out">Logout</a>
+      <a href="/products/new">Add Product</a>
+      <a href="/products">All Products</a>
+      <a href="/admin/orders">Business Orders</a>
     <% } %>
 
-  <% if (user && !user.admin) { %>
-    <a href="/auth/sign-out">Logout</a>
-    <a href="/products">Browse All Products</a>
-    <a href="/orders/cart">My Cart</a>
-    <a href="/orders/new">Place Order</a>
-    <a href="/orders">My Orders</a>
-    
+    <% if (user && !user.admin) { %>
+      <a href="/auth/sign-out">Logout</a>
+      <a href="/products">Browse All Products</a>
+      <a href="/orders/cart">My Cart</a>
+      <a href="/orders/new">Place Order</a>
+      <a href="/orders">My Orders</a>
+    <% } %>
 
-  <% } %>
+  </div>
 </div>
